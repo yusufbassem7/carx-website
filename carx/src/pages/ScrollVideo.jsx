@@ -11,8 +11,6 @@ export default function ScrollVideoPage({ carData, setPage }) {
   const [images, setImages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
-
-  // عدد الصور الإجمالي يقرأ من carData أو القيمة الافتراضية
   const totalFrames = carData.totalFrames || 238;
 
   const getFrameUrl = (index) => {
@@ -71,25 +69,18 @@ export default function ScrollVideoPage({ carData, setPage }) {
       const canvasRatio = canvas.width / canvas.height;
       
       let dW, dH, oX, oY;
-      
-      // ─── التعديل هنا لـ تصغير العربية ──────────────────
-      // 0.7 تعني أن السيارة ستأخذ 70% من حجم الشاشة وتترك 30% هوامش
+ 
       const scaleFactor = 0.9; 
 
       if (imgRatio > canvasRatio) {
-        // إذا كانت الصورة أعرض من الشاشة
         dW = canvas.width * scaleFactor;
         dH = dW / imgRatio;
       } else {
-        // إذا كانت الشاشة أطول من الصورة
         dH = canvas.height * scaleFactor;
         dW = dH * imgRatio;
       }
-
-      // حسابات السنترة (Center Alignment)
       oX = (canvas.width - dW) / 2;
       oY = (canvas.height - dH) / 2;
-      // ──────────────────────────────────────────────────
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, oX, oY, dW, dH);

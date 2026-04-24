@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-// استيراد الصفحات
 import HomePage from "./pages/home";
 import ShowroomPage from "./pages/Showroom";
 import GaragePage from "./pages/Garage";
 import ContactPage from "./pages/Contact";
 import ScrollVideoPage from "./pages/ScrollVideo";
+import DetailPage from "./pages/DetailPage";
 
-// ─── NAVIGATION COMPONENT ──────────────────────────────────────────
 function Nav({ page, setPage }) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,12 +32,12 @@ function Nav({ page, setPage }) {
       }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", height: 70, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        {/* Logo */}
+
         <button onClick={() => setPage("HOME")} style={{ background: "none", border: "none", cursor: "pointer" }}>
           <span className="font-display" style={{ color: "var(--cyan)", fontSize: 24, fontWeight: 800, letterSpacing: "0.08em" }}>CARX</span>
         </button>
 
-        {/* Nav links */}
+      
         <nav style={{ display: "flex", gap: 4 }}>
           {links.map((l) => (
             <button
@@ -65,7 +63,6 @@ function Nav({ page, setPage }) {
   );
 }
 
-// ─── FOOTER COMPONENT ──────────────────────────────────────────────
 function Footer({ setPage }) {
   return (
     <footer style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "40px 32px", marginTop: 80 }}>
@@ -85,7 +82,6 @@ function Footer({ setPage }) {
   );
 }
 
-// ─── ROOT APP ──────────────────────────────────────────────────────
 export default function App() {
   const [page, setPage] = useState({ name: "HOME", car: null });
 
@@ -103,6 +99,8 @@ export default function App() {
     GARAGE: <GaragePage setPage={handleSetPage} />,
     CONTACT: <ContactPage />,
     SCROLL_VIDEO: <ScrollVideoPage carData={page.car} setPage={handleSetPage} />,
+  
+    DETAILS: <DetailPage car={page.car} setPage={handleSetPage} />, 
   };
 
   return (
@@ -110,7 +108,6 @@ export default function App() {
       <div className="noise-overlay" />
       <div className="scanline" />
 
-      {/* الـ Nav هيظهر فوق كل الصفحات */}
       <Nav page={currentPageName} setPage={handleSetPage} />
 
       <AnimatePresence mode="wait">
@@ -126,8 +123,7 @@ export default function App() {
         </motion.main>
       </AnimatePresence>
 
-      {/* الـ Footer هيظهر في كل الصفحات ما عدا صفحة السكرول فيديو لو عايز توفر مساحة */}
-      {currentPageName !== "SCROLL_VIDEO" && <Footer setPage={handleSetPage} />}
+      {currentPageName !== "SCROLL_VIDEO" && currentPageName !== "DETAILS" && <Footer setPage={handleSetPage} />}
     </>
   );
 }

@@ -15,7 +15,6 @@
 html { scroll-behavior: smooth; }
 body { background: #000 !important; color: #fff; overflow-x: hidden; font-family: 'Space Grotesk', sans-serif; }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: #000; }
 ::-webkit-scrollbar-thumb { background: var(--cyan-glow); border-radius: 2px; }

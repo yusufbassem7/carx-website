@@ -74,7 +74,6 @@ export default function HomePage({ setPage }) {
 
      
       
-      {/* Hero Section - لاحظ الـ padding العلوي لترك مساحة للـ Navbar الأصلي */}
       <section style={{ minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"center", padding:"120px 32px 60px", maxWidth:1280, margin:"0 auto" }}>
         <motion.div variants={stagger} initial="hidden" animate={!loading ? "show" : "hidden"}>
           <motion.div variants={fadeUp} style={{ display:"flex", alignItems:"center", gap:12, marginBottom:32 }}>
@@ -101,7 +100,7 @@ export default function HomePage({ setPage }) {
         </motion.div>
       </section>
 
-      {/* Car Slider Section */}
+      
       <section style={{ padding:"0 0 80px" }}>
         <div style={{ padding:"0 32px", maxWidth:1280, margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:24 }}>
           <InViewWrapper><motion.h2 variants={fadeUp} style={{ fontSize:13, letterSpacing:"0.3em", color:"#555", textTransform: "uppercase" }}>Featured Vehicles</motion.h2></InViewWrapper>
@@ -128,7 +127,7 @@ export default function HomePage({ setPage }) {
         </div>
       </section>
 
-      {/* Specs Grid */}
+      
       <section style={{ padding:"0 32px 80px", maxWidth:1280, margin:"0 auto" }}>
         <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:12 }}>
           {specs.map((s) => (
