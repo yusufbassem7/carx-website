@@ -143,6 +143,7 @@ export default function HomePage({ setPage }) {
       </section>
 
   
+
       <footer style={{ padding: "60px 32px", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.05)", fontSize: 10, color: "#555", letterSpacing: 2 }}>
         © 2026 CARX HYPER GARAGE. ALL RIGHTS RESERVED.
       </footer>
